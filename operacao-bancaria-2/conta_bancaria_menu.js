@@ -11,7 +11,7 @@ class ContaBancaria{
         if(depositar <= 0){
             throw new Error("O valor do depósito deve ser maior que zero.");
         } else{
-            this.saldoAtual = this.saldoAtual + depositar;
+            this.saldoAtual += depositar;
             console.log(`Saldo atual: R$ ${this.saldoAtual}`);
         }
     }
@@ -23,7 +23,7 @@ class ContaBancaria{
         }else if(sacar <= 0){
             throw new Error("O valor do saque deve ser maior que zero.");
         }else{
-            this.saldoAtual = this.saldoAtual - sacar;
+            this.saldoAtual -= sacar;
             console.log(`Saldo atual: R$ ${this.saldoAtual}`);
         }
     }
@@ -35,7 +35,21 @@ class ContaBancaria{
     }
 }
 
-const titular = readline.question("Digite o nome do titular: ");
+let titular;
+let cadastroValido = false;
+
+while(cadastroValido === false){
+    try{
+        titular = readline.question("Digite o nome do titular: ");
+        if(titular.trim() === ""){
+            throw new Error("Nome do titular não pode ficar vazio. ");
+        }
+        cadastroValido = true
+    } catch(erro){
+        console.log(`[Erro Capturado] ${erro.message}`)
+    }
+}
+
 const conta = new ContaBancaria(titular);
 
 let opcao = -1
