@@ -7,7 +7,7 @@ class ContaBancaria{
     }
     
 
-    depositarValor(valor){
+    depositar(valor){
         if(valor <= 0){
             throw new Error("O valor do depósito deve ser maior que zero.");
         }else{
@@ -17,7 +17,7 @@ class ContaBancaria{
         }
     }
 
-    sacarValor(valor){
+    sacar(valor){
         if(valor > this.saldoInicial){
             throw new Error("Saldo insuficiente para realizar o saque.");
         }else if(valor <= 0){
@@ -29,13 +29,18 @@ class ContaBancaria{
     }
 }
 const titular = readline.question("Digite o nome do titular: ");
-const conta = new ContaBancaria(titular,100)
+const saldoInicial = readline.questionFloat("Digite o saldo Inicial: Ex: ");
+const conta = new ContaBancaria(titular, saldoInicial)
 
 try {
-    conta.depositarValor(50);
-    conta.sacarValor(20);
 
-    conta.sacarValor(500);
+    console.log(`\nTitular: ${conta.titular}`);
+    
+    const valorDeposito = readline.questionFloat("Digite o valor que deseja depositar: ");
+    conta.depositar(valorDeposito);
+
+    const valorSaque = readline.questionFloat("Digite o valor que deseja sacar: ");
+    conta.sacar(valorSaque);
 
 } catch (erro) {
     console.log(`[ERRO CAPTURADO]: ${erro.message}`);
