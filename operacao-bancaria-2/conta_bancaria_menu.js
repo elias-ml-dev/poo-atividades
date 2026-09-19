@@ -36,15 +36,15 @@ class ContaBancaria{
 }
 
 let titular;
-let cadastroValido = false;
+let titularValido = false;
 
-while(cadastroValido === false){
+while(titularValido === false){
     try{
         titular = readline.question("Digite o nome do titular: ");
         if(titular.trim() === ""){
             throw new Error("Nome do titular não pode ficar vazio. ");
         }
-        cadastroValido = true
+        titularValido = true
     } catch(erro){
         console.log(`[Erro Capturado] ${erro.message}`)
     }
