@@ -146,7 +146,7 @@ while (!contaValida) {
             throw new Error("Opção Inválida. Escolha um dos 3 tipos de conta.");
         }
     } catch (erro) {
-        console.error(`[ERRO CAPITURADO] ${erro.message}`);
+        console.error(`[ERRO CAPTURADO] ${erro.message}`);
     }
 }
 
@@ -181,7 +181,7 @@ while(opcao !== 0){
                 throw new Error(`Opção inválida... Escolha apenas as opções do "MENU" `);
             }
         } catch(erro){
-            console.error(`[ERRO CAPITURADO] ${erro.message}`);
+            console.error(`[ERRO CAPTURADO] ${erro.message}`);
         }finally{
             console.log("Opção processada...")
         }
